@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    depends_on:
+      - nats
+
+  microservice1:
+    build:
+      context: ./microservice1
+      dockerfile: Dockerfile
+    depends_on:
+      - nats
+
+  microservice2:
+    build:
+      context: ./microservice2
+      dockerfile: Dockerfile
+    depends_on:
+      - nats
+
+  nats:
+    build:
+      context: ./nats
+      dockerfile: Dockerfile
+    ports:
+      - "4222:4222"
