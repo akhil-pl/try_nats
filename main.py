@@ -9,7 +9,7 @@ app = FastAPI()
 
 async def setup_nats():
     nc = NATS()
-    await nc.connect("nats://nats:4222")
+    await nc.connect("nats://localhost:4222")
     # Enable JetStream
     js = nc.jetstream()
     return nc, js

@@ -8,7 +8,7 @@ async def message_handler(msg):
 
 async def run():
     nc = NATS()
-    await nc.connect("nats://nats:4222")
+    await nc.connect("nats://localhost:4222")
     await nc.subscribe("subject1", cb=message_handler, queue="microservice1")
 
 if __name__ == "__main__":

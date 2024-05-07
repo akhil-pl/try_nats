@@ -8,7 +8,7 @@ async def message_handler(msg):
 
 async def run():
     nc = NATS()
-    await nc.connect("nats://nats:4222")
+    await nc.connect("nats://localhost:4222")
     await nc.subscribe("subject2", cb=message_handler)
     print(f"Listening for messages on subject 'your_subject'")
     # Keep the service running indefinitely
